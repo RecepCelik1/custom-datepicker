@@ -17,7 +17,7 @@ import {
 } from "date-fns";
 import { FiCalendar, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { CSSTransition } from 'react-transition-group';
-import "./datepicker.css"; // transition ve arka plan karartma stilleri için CSS dosyası
+import "./datepicker.css"; 
 
 const Datepicker = ({ selectedDate, onDateChange }) => {
   const [currentDate, setCurrentDate] = useState(selectedDate || new Date());
@@ -70,8 +70,8 @@ const Datepicker = ({ selectedDate, onDateChange }) => {
   };
 
   const days = eachDayOfInterval({
-    start: startOfWeek(startOfMonth(currentDate), { weekStartsOn: 1 }), // Pazartesi haftanın ilk günü
-    end: endOfWeek(endOfMonth(currentDate), { weekStartsOn: 1 }), // Pazartesi haftanın ilk günü
+    start: startOfWeek(startOfMonth(currentDate), { weekStartsOn: 1 }),
+    end: endOfWeek(endOfMonth(currentDate), { weekStartsOn: 1 }),
   });
 
   const months = eachMonthOfInterval({
@@ -102,8 +102,8 @@ const Datepicker = ({ selectedDate, onDateChange }) => {
         unmountOnExit
         nodeRef={nodeRef}
       >
-        <div ref={nodeRef} className="absolute top-12 left-0 z-50 bg-white rounded-md shadow-lg p-4 w-full max-w-xs">
-          <div className="flex items-center justify-between mb-2">
+  <div ref={nodeRef} className="datepicker-menu absolute top-12 left-0 z-50 bg-white rounded-md shadow-lg p-4">
+  <div className="flex items-center justify-between mb-2">
             <FiChevronLeft className="cursor-pointer hover:text-blue-500" onClick={view === "year" ? prevYearRange : prevMonth} />
             <span className="cursor-pointer hover:text-blue-500" onClick={() => setView("year")}>{format(currentDate, "yyyy")}</span>
             <span className="cursor-pointer hover:text-blue-500" onClick={() => setView("month")}>{format(currentDate, "MMMM")}</span>
